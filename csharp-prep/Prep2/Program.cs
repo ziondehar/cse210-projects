@@ -29,7 +29,7 @@ class Program
             }
         else 
             {
-                Console.WriteLine("This grade isnt possible");
+                Console.WriteLine("This isnt a possible grade");
             }
     }
 }
