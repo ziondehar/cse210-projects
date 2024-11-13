@@ -1,4 +1,5 @@
 using System;
+using Microsoft.VisualBasic;
 
 class Program
 {
@@ -19,5 +20,12 @@ class Program
 
         job1.Display();
         job2.Display();
+
+        Resume resume1 = new Resume();
+        resume1._name = "kyle";
+        resume1. _jobs.Add(job1);
+        resume1._jobs.Add(job2);
+
+        resume1.Display();
     }
 }
