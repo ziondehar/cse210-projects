@@ -18,11 +18,8 @@ class Program
         job2. _startYear = 2023;
         job2. _endYear = 2024 ;
 
-        job1.Display();
-        job2.Display();
-
         Resume resume1 = new Resume();
-        resume1._name = "kyle";
+        resume1._name = "Kyle";
         resume1. _jobs.Add(job1);
         resume1._jobs.Add(job2);
 
