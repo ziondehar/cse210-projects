@@ -1,21 +1,31 @@
 using System;
 
 
-public class Journal;
+public class Journal
 {
-    public AddEntry()
+    public List<Entry> _entries = new List<Entry>();
+    public AddEntry(Entry newEntry)
     {
+        _entries.Add(newEntry);
 
     }
 
     public void DisplayAll()
-     console.WriteLine()
+     {
+        console.WriteLine()
+     }
 
 
     public LoadFromFile()
+    {
+
+    }
 
 
-    public SaveToFile()
+    public SaveToFile(string file)
+    {
+
+    }
 
 
 
