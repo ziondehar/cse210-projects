@@ -9,17 +9,17 @@ class Entry
     
     public Entry(string _date, string _promptText, string _promptEntry)
     {
-        Date = _date;
+        _date = Date;
         
-        promptText = _promptText;
-        promptEntry = _promptEntry;
+        _promptText = promptText;
+       _promptEntry = promptEntry;
 
     }
     public void Display()
     {
         Console.WriteLine($"Date: {Date}");
-        Console.WriteLine($"Prompt: {PromptText}");
-        Console.WriteLine($"Entry: {EntryText}");
+        Console.WriteLine($"Prompt: {promptText}");
+        Console.WriteLine($"Entry: {promptText}");
         Console.WriteLine();
     }
         
