@@ -15,7 +15,7 @@ class Entry
         promptEntry = _promptEntry;
 
     }
-    public void Display();
+    public void Display()
     {
         Console.WriteLine($"Date: {Date}");
         Console.WriteLine($"Prompt: {PromptText}");
