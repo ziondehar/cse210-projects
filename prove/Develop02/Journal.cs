@@ -8,7 +8,7 @@ public class Journal;
 
     }
 
-    public void Display()
+    public void DisplayAll()
      console.WriteLine()
 
 
