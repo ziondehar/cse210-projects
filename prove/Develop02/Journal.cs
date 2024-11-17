@@ -11,4 +11,13 @@ public class Journal;
     public void Display()
      console.WriteLine()
 
+
+    public LoadFromFile()
+
+
+    public SaveToFile()
+
+
+
+
 }
