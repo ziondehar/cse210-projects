@@ -4,7 +4,7 @@ using System;
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
-    public AddEntry(Entry newEntry)
+    public void AddEntry(Entry newEntry)
     {
         _entries.Add(newEntry);
 
@@ -12,11 +12,20 @@ public class Journal
 
     public void DisplayAll()
      {
-        console.WriteLine()
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("No entries.");
+            return;
+        }
+
+        foreach (var entry in _entries)
+        {
+            entry.Display();
+        }
      }
 
 
-    public LoadFromFile()
+    public LoadFromFile(string file)
     {
 
     }
