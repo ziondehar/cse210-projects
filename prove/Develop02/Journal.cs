@@ -47,7 +47,7 @@ public class Journal
             foreach (var entry in _entries)
             {
                 
-                writer.WriteLine($"{entry.getDate()}|{entry.GetPrompt()}|{entry.GetEntryText()}");
+                writer.WriteLine($"{entry.GetDate()}|{entry.GetPrompt()}|{entry.GetEntryText()}");
                 // This produces writing order
             }
         }
