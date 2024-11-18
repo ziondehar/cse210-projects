@@ -12,7 +12,9 @@ public class Journal
             Console.WriteLine("Cannot add nothing");
             return;
         }
+        
         _entries.Add(newEntry);
+        Console.WriteLine("Succesfully added");
 
 
     }
@@ -32,15 +34,15 @@ public class Journal
      }
 
 
-    public LoadFromFile(string file)
+    public void LoadFromFile(string file)
     {
 
     }
 
 
-    public SaveToFile(string file)
+    public void SaveToFile(string file)
     {
-         using (StreamWriter writer = new StreamWriter(file)) // Open the file for writing
+         using (StreamWriter writer = new StreamWriter(file)) // Opens the file for writing
         {
             foreach (var entry in _entries)
             {
