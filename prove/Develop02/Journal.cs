@@ -7,13 +7,13 @@ public class Journal
     public void AddEntry(Entry newEntry)
     {
         
-        if (newEntry == null) // Ensure the entry is valid
+        if (newEntry == null) 
         {
-            Console.WriteLine("Cannot add a null entry.");
+            Console.WriteLine("Cannot add nothing");
             return;
         }
         _entries.Add(newEntry);
-        
+
 
     }
 
