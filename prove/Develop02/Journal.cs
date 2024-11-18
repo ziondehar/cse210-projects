@@ -54,9 +54,8 @@ public class Journal
 
         Console.WriteLine($"Journal saved to {file}");
     }
-    }
-
-
-
-
 }
+
+
+
+
