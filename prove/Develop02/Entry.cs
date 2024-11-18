@@ -25,5 +25,5 @@ public class Entry
         
     public string GetDate() => _date;
     public string GetPrompt() => _promptText;
-    public string GetEntryText() => _promptText;
+    public string GetEntryText() => _promptEntry;
 }

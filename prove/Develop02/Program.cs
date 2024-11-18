@@ -21,7 +21,7 @@ class Program
             switch (choice)
             {
                 case "1":
-                    AddEntry(journal);
+                    AddEntry(journal, promptGenerator);
                     break;
                 case "2":
                     journal.DisplayAll();
@@ -33,24 +33,39 @@ class Program
                     LoadFromFile(journal);
                     break;
                 case "5":
-                    Console.WriteLine("Goodbye!");
+                    Console.WriteLine("bye!");
                     return;
                 default:
-                    Console.WriteLine("Invalid option. Please try again.");
+                    Console.WriteLine("not an option. Please try again.");
                     break;
             }
         }
         
     }
 
-    static void AddEntry(Journal journal)
+    static void AddEntry(Journal journal, PromptGenerator promptGenerator)
     {
-         Console.Write("Enter the date (YYYY-MM-DD): ");
-        string date = Console.ReadLine();
-        Console.Write
-        string prompt = Console.ReadLine();
-        Console.Write("Enter your Answer: ");
+        string prompt = promptGenerator.GetPrompt();
+        Console.WriteLine($"Prompt: {prompt}");
+        Console.Write("Your response: ");
         string response = Console.ReadLine();
+        string date = DateTime.Now.ToString("yyyy-MM-dd");
+        Entry newEntry = new Entry(date, prompt, response);
+        journal.AddEntry(newEntry);
+    }
+
+    static void SaveToFile(Journal journal)
+    {
+        Console.Write("Enter the file name to save to: ");
+        string fileName = Console.ReadLine();
+        journal.SaveToFile(fileName);
+    }
+
+    static void LoadFromFile(Journal journal)
+    {
+        Console.Write("Enter the file name to load from: ");
+        string fileName = Console.ReadLine();
+        journal.LoadFromFile(fileName);
     }
 }
 
