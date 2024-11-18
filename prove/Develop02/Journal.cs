@@ -14,7 +14,7 @@ public class Journal
         }
         
         _entries.Add(newEntry);
-        Console.WriteLine("Succesfully added");
+        Console.WriteLine("Added");
 
 
     }

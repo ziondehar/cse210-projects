@@ -23,4 +23,7 @@ public class Entry
         Console.WriteLine();
     }
         
+    public string GetDate() => _date;
+    public string GetPrompt() => _promptText;
+    public string GetEntryText() => _promptText;
 }
