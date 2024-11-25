@@ -10,7 +10,7 @@ public class Fraction
    
     public Fraction()
     {
-        _top = 0;
+        _top = 1;
         _bottom = 1; 
     }
 
