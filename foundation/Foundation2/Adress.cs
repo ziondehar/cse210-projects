@@ -14,4 +14,13 @@ public class Address
     _Country = country;
     _State = state;
     }
+
+      public bool IsInUSA()
+    {
+        return _Country.Equals("USA", StringComparison.OrdinalIgnoreCase);
+    }
+    public string GetFullAddress()
+    {
+        return $"{_StreetAddress}\n{_City}\n{_State}\n{_Country}";
+    }
 }
