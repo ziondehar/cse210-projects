@@ -17,9 +17,10 @@ public class Video
 
     public Video(string title, string author, int video )
     {
-        string _Title = title;
-        string _Author = author;
-        int _VideoLength = video;
+        _Title = title;
+        _Author = author;
+        _VideoLength = video;
+        comments = new List<Comment>();
     
     }
      public void AddComment(Comment comment)
