@@ -1,18 +1,11 @@
 using System;
-using System.Data;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-
-{
-    
-}
 public class Video
 
 {
     private string _Title;
     private string _Author;
     private int _VideoLength;
-    private List<Comment> comments;
+    private List<Comment> _comments;
     
 
     public Video(string title, string author, int video )
@@ -20,16 +13,16 @@ public class Video
         _Title = title;
         _Author = author;
         _VideoLength = video;
-        comments = new List<Comment>();
+        _comments = new List<Comment>();
     
     }
      public void AddComment(Comment comment)
    {
-     comments.Add(comment);
+     _comments.Add(comment);
    }
      public int GetCommentCount()
     {
-        return comments.Count;
+        return _comments.Count;
     }
     public void DisplayVideo()
 
@@ -39,9 +32,9 @@ public class Video
         Console.WriteLine($"Length: {_VideoLength} seconds");
         Console.WriteLine($"Number of Comments: {GetCommentCount()}");
         Console.WriteLine("Comments:");
-        foreach (var comment in comments)
+        foreach (var comment in _comments)
         {
-            Console.WriteLine($" Comment {comment}");
+            Console.WriteLine($" - {comment.DisplayComment()}");
         }
         Console.WriteLine();
     }

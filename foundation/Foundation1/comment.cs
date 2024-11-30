@@ -9,8 +9,8 @@ public class Comment
 
    public Comment (string commentName, string text)
    {
-    string _CommentName = commentName;
-    string _text = text;
+    _CommentName = commentName;
+    _text = text;
    }
   
 
