@@ -22,7 +22,10 @@ public class Video
         int _VideoLength = video;
     
     }
-    
+     public void AddComment(Comment comment)
+   {
+     comments.Add(comment);
+   }
      public int GetCommentCount()
     {
         return comments.Count;
