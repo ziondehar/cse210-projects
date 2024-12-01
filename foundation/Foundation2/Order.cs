@@ -4,6 +4,7 @@ public class Order
 {
     List<Product> _products;
     Customer _customer;
+    
 
     public Order(Customer customer)
     {
@@ -17,20 +18,27 @@ public class Order
         _products.Add(product);
     }
 
-    public double CalculateTotalCost()
+    public decimal CalculateTotalCost()
     {
-        double totalCost = 0;
+        decimal totalCost = 0;
 
-      
         foreach (var product in _products)
         {
-            totalCost += product.
-
-    
+            totalCost += product.TotalCost();
+        }
         totalCost += _customer.LivesInUSA() ? 5 : 35;
 
         return totalCost;
     }
-
-
+    public void DisplayOrder()
+    {
+        Console.WriteLine($"Customer: {_customer.GetName()}");
+        Console.WriteLine("Products:");
+        foreach (var product in _products)
+        {
+            product.DisplayProducts();
+            Console.WriteLine();
+        }
+        Console.WriteLine($"Total Order Cost: ${CalculateTotalCost():F2}");
+    }
 }
