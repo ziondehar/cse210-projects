@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation2 World!");
+        var address1 = new Address(123, Perth, Australia, WA)
+        Console.WriteLine("Address created:");
+        Console.WriteLine(address1.GetFullAddress());
+        Console.WriteLine();
     }
 }
