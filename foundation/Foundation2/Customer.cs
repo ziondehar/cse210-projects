@@ -3,17 +3,23 @@ using System;
 public class Customer
 {
     private string _name;
-    private Address address;
+    private Address _address;
 
-    public Customer(string)
-    
-    public bool IsInUSA()
+    public Customer(string name, Address address)
     {
-        return _Country.Equals("USA", StringComparison.OrdinalIgnoreCase);
+        _name = name;
+        _address = address;
     }
-    public string GetFullCustomer()
+        public bool LivesInUSA()
     {
-        return $"{_StreetAddress}\n{_City}\n{_State}\n{_Country}";
+        return _address.IsInUSA();
+    }
+
+    public string GetName()
+    {
+        return _name;
     }
 }
+    
+   
 
