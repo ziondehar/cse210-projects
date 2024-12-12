@@ -1,13 +1,19 @@
 using System;
-using System.Reflection.Metadata.Ecma335;
+
+
 
 public class Square : Shapes
 {
-   private Double _side;
+   private double _side;
 
-   public class Square (Double side)
+   public Square (double side)
    {
         _side = side;
    }
+
+    public override double GetArea()
+    {
+        return _side * _side;
+    }
 
 }
