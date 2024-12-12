@@ -4,7 +4,7 @@ public class Rectangle : Shapes
     private double _length;
     private double _width;
 
-    public Rectangle(double length, double width)
+    public Rectangle(string color,double length, double width):base (color)
     {
         _length = length;
         _width = width;
