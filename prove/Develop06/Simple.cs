@@ -17,7 +17,7 @@ public class Simple : Goal
     }
     public override string GetDetailsString()
     {
-        Console.WriteLine($"Simple Goal = {_title}");
+        return $"Simple Goal = {_title}";
     }
     public override string GetStringRepresentation()
     {
