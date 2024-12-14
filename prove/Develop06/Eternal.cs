@@ -1,5 +1,5 @@
 using System;
-public abstract class Eternal:Goal
+public class Eternal: Goal
 {
     
 
