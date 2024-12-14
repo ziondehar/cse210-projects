@@ -17,10 +17,10 @@ public class Simple : Goal
     }
     public override string GetDetailsString()
     {
-        return $"Simple Goal = {_title}";
+        return $"SimpleGoal: {GetTitle()}, {GetDescription()}, {GetPoints()}, IsComplete: {IsComplete()}";
     }
     public override string GetStringRepresentation()
     {
-         return $"Name: {_title}, Description: {_description}, Points: {_points}";
+          return $"Name: {GetTitle()}, Description: {GetDescription()}, Points: {GetPoints()}";
     }
 }

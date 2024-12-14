@@ -11,6 +11,20 @@ public abstract class Goal
         _description = description;
         _points = points;
     }
+    public string GetTitle()
+    {
+        return _title;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
 
     public abstract void RecordEvent();
     
