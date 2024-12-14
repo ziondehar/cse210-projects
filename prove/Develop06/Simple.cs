@@ -1,18 +1,16 @@
 using System;
-public abstract class Goal
+public class Simple : Goal
 {
-    protected string _title;
-    protected string _description;
-    protected int _points;
-
-    public Goal(string name, string description, int points)
+    private Boolean _IsComplete;
+    public Simple(string name, string description, int points) : base (name, description, points)
     {
-        _title = name;
-        _description = description;
-        _points = points;
+        _IsComplete = false;
     }
 
-    public abstract void RecordEvent();
+    public override void RecordEvent();
+    {
+        _IsComplete = true;
+    }
     public abstract bool IsComplete();
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();

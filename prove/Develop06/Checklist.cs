@@ -1,11 +1,11 @@
 using System;
-public abstract class Goal
+public class Checklist : Goal
 {
     protected string _title;
     protected string _description;
     protected int _points;
 
-    public Goal(string name, string description, int points)
+    public Checklist(string name, string description, int points, ta)
     {
         _title = name;
         _description = description;
@@ -13,7 +13,7 @@ public abstract class Goal
     }
 
     public abstract void RecordEvent();
-    public abstract bool IsComplete();
+    public override IsComplete();
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();
 }

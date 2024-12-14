@@ -1,9 +1,9 @@
 using System;
 public abstract class Goal
 {
-    protected string _title;
-    protected string _description;
-    protected int _points;
+    private string _title;
+    private string _description;
+    private int _points;
 
     public Goal(string name, string description, int points)
     {
