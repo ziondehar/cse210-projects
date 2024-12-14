@@ -26,10 +26,10 @@ public class Checklist : Goal
     }
     public override string GetDetailsString()
     {
-        Console.WriteLine($"Simple Goal = {_title}");
+        return $"ChecklistGoal: {GetTitle()}, {GetDescription()}, {GetPoints()}, Completed: {_amountCompleted}/{_target}, Bonus: {_bonus}";
     }
     public override string GetStringRepresentation()
     {
-         return $"Name: {_title}, Description: {_description}, Points: {_points}";
+        return $"Name: {GetTitle()}, Description: {GetDescription()}, Points: {GetPoints()}, Target: {_target}, Bonus: {_bonus}";
     }
 }
