@@ -1,5 +1,5 @@
 using System;
-public abstract class Goal
+public abstract class Eternal
 {
     protected string _title;
     protected string _description;
@@ -12,8 +12,18 @@ public abstract class Goal
         _points = points;
     }
 
-    public abstract void RecordEvent();
-    public abstract bool IsComplete();
-    public abstract string GetDetailsString();
-    public abstract string GetStringRepresentation();
-}
+    public override void RecordEvent()
+    {   
+        _IsComplete = true;
+    }
+    public override bool IsComplete()
+    {
+        return _IsComplete;
+    }
+    public override string GetDetailsString()
+    {
+        Console.WriteLine($"Simple Goal = {_title}");
+    }
+    public override string GetStringRepresentation()
+    {
+         return $"Name: {_title}, Description: {_description}, Points: {_points}";

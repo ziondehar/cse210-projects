@@ -1,4 +1,4 @@
-using System;
+
 public class Simple : Goal
 {
     private Boolean _IsComplete;
@@ -7,11 +7,20 @@ public class Simple : Goal
         _IsComplete = false;
     }
 
-    public override void RecordEvent();
-    {
+    public override void RecordEvent()
+    {   
         _IsComplete = true;
     }
-    public abstract bool IsComplete();
-    public abstract string GetDetailsString();
-    public abstract string GetStringRepresentation();
+    public override bool IsComplete()
+    {
+        return _IsComplete;
+    }
+    public override string GetDetailsString()
+    {
+        Console.WriteLine($"Simple Goal = {_title}");
+    }
+    public override string GetStringRepresentation()
+    {
+         return $"Name: {_title}, Description: {_description}, Points: {_points}";
+    }
 }
