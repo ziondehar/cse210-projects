@@ -17,6 +17,7 @@ public class GoalManager
             Console.WriteLine("3. Save Goal");
             Console.WriteLine("4. View Score");
             Console.WriteLine("5. Load Goals");
+            Console.WriteLine("6. Record Event");
             Console.Write("Choose an option: ");
             
             string choice = Console.ReadLine();
@@ -38,12 +39,15 @@ public class GoalManager
                 case "5":
                     LoadGoals();
                     break;
+                case "6":
+                    RecordGoalEvent();
+                    break;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-
-            Console.WriteLine("Press any key to continue...");
+            ShowSpinner(2);
+            Console.WriteLine($"Press any key to continue");
             Console.ReadKey();
         }
     }
@@ -136,7 +140,30 @@ public class GoalManager
     }
     Console.WriteLine(); 
 }
+public void RecordGoalEvent()
+{
+    ListGoalNames();
+    Console.Write("Select the goal to record progress (by index): ");
+    int index = int.Parse(Console.ReadLine());
+
+    if (index < 0 || index >= _goals.Count)
+    {
+        Console.WriteLine("Invalid index.");
+        return;
+    }
     
+    _goals[index].RecordEvent();
+    if (_goals[index].IsComplete())
+    {
+        Console.WriteLine("Goal completed!");
+        _score += _goals[index].GetPoints();
+    }
+    else
+    {
+        Console.WriteLine("Progress recorded.");
+    }
+}
+
 
 
    
