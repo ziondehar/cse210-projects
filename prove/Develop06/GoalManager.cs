@@ -11,7 +11,6 @@ public class GoalManager
         while (true)
         {
             Console.Clear();
-            ShowSpinner(2);
             Console.WriteLine("Goal Manager");
             Console.WriteLine("1. Create a Goal");
             Console.WriteLine("2. View Goals");
