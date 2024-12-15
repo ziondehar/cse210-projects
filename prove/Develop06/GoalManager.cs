@@ -116,12 +116,26 @@ public class GoalManager
     }
     
     _goals.Add(goal);
+    ShowSpinner(2);
     Console.WriteLine("Your Goal has been created");
 }
 
 
  
+//Animations
+ public void ShowSpinner(int seconds)
+{
+    string spinner = "|/-\\"; 
 
+    for (int i = 0; i < seconds * 4; i++)
+    {
+        string symbol = spinner[i % spinner.Length].ToString();
+        Console.Write(symbol); 
+        System.Threading.Thread.Sleep(250); 
+        Console.Write("\b \b"); 
+    }
+    Console.WriteLine(); 
+}
     
 
 
