@@ -1,5 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO; 
 
 public class GoalManager 
 {
@@ -46,7 +49,6 @@ public class GoalManager
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-            ShowSpinner(2);
             Console.WriteLine($"Press any key to continue");
             Console.ReadKey();
         }
@@ -54,12 +56,60 @@ public class GoalManager
     
     public void SaveGoals()
     {
-       
+     try
+    {
+        using (StreamWriter writer = new StreamWriter("goals.txt"))
+        {
+            // Write score
+            writer.WriteLine(_score);
+
+            // Write each goal
+            foreach (var goal in _goals)
+            {
+                writer.WriteLine(goal.GetStringRepresentation());
+            }
+        }
+        Console.WriteLine("Goals and score saved successfully to goals.txt.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error saving goals: {ex.Message}");
+    }
     }
 
     public void LoadGoals()
     {
-    
+        try
+    {
+        if (!File.Exists("goals.txt"))
+        {
+            Console.WriteLine("No save file found.");
+            return;
+        }
+
+        using (StreamReader reader = new StreamReader("goals.txt"))
+        {
+            // Read score
+            _score = int.Parse(reader.ReadLine());
+
+            // Clear current goals and load from file
+            _goals.Clear();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                Goal goal = ParseGoalFromString(line);
+                if (goal != null)
+                {
+                    _goals.Add(goal);
+                }
+            }
+        }
+        Console.WriteLine("Goals and score loaded successfully from goals.txt.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error loading goals: {ex.Message}");
+    }
     }
 
     public void DisplayPlayerInfo()
@@ -142,29 +192,98 @@ public class GoalManager
 }
 public void RecordGoalEvent()
 {
-    ListGoalNames();
-    Console.Write("Select the goal to record progress (by index): ");
-    int index = int.Parse(Console.ReadLine());
-
-    if (index < 0 || index >= _goals.Count)
+    if (_goals.Count == 0)
     {
-        Console.WriteLine("Invalid index.");
+        Console.WriteLine("No goals available to record progress.");
         return;
     }
-    
-    _goals[index].RecordEvent();
-    if (_goals[index].IsComplete())
+
+    Console.WriteLine("Available Goals:");
+    foreach (var goal in _goals)
+    {
+        Console.WriteLine(goal.GetDetailsString());
+    }
+
+    Console.Write("Enter the name of the goal to record progress: ");
+    string goalName = Console.ReadLine();
+
+    Goal selectedGoal = _goals.Find(g => g.GetTitle().Equals(goalName, StringComparison.OrdinalIgnoreCase));
+
+    if (selectedGoal == null)
+    {
+        Console.WriteLine("Goal was not found. try again.");
+        return;
+    }
+
+    selectedGoal.RecordEvent();
+
+    if (selectedGoal.IsComplete())
     {
         Console.WriteLine("Goal completed!");
-        _score += _goals[index].GetPoints();
+        _score += selectedGoal.GetPoints();
     }
     else
     {
         Console.WriteLine("Progress recorded.");
     }
 }
+private Goal ParseGoalFromString(string goalString)
+{
+    try
+    {
+        string[] parts = goalString.Split(',');
+
+    
+        if (parts.Length < 4)
+        {
+            Console.WriteLine($"Wrong goal format: {goalString}");
+            return null;
+        }
+
+        string type = parts[0].Trim();
+        string name = parts[1].Trim();
+        string description = parts[2].Trim();
+        int points = int.Parse(parts[3].Trim());
+
+        switch (type)
+        {
+            case "Simple":
+                return new Simple(name, description, points);
+
+            case "Checklist":
+                if (parts.Length < 7)
+                {
+                    Console.WriteLine($"Wrong goal format: {goalString}");
+                    return null;
+                }
+
+                int target = int.Parse(parts[4].Trim());
+                int bonus = int.Parse(parts[5].Trim());
+                int amountCompleted = int.Parse(parts[6].Trim());
+                var checklistGoal = new Checklist(name, description, points, target, bonus)
+                {
+                    _amountCompleted = amountCompleted 
+                };
+                return checklistGoal;
+
+            case "Eternal":
+                return new Eternal(name, description, points);
+
+            default:
+                Console.WriteLine($" goal type? : {type}");
+                return null;
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"trouble parsing goal: {goalString}. Exception: {ex.Message}");
+        return null;
+    }
+}
+
 
 
 
    
 }
+   

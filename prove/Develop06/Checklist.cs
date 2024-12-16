@@ -1,13 +1,13 @@
 using System;
 public class Checklist : Goal
 {
-    private int _amountCompleted;
+    public int _amountCompleted;
     private int _target;
     private int _bonus;
 
-    public Checklist(string name, string description, int points, int target,int bonus) : base (name, description, points)
+    public Checklist(string name, string description, int points, int target,int bonus, int amountCompleted = 0) : base (name, description, points)
     {
-       _amountCompleted = 0;
+       _amountCompleted = amountCompleted;
         _target = target;
         _bonus = bonus;
     }

@@ -2,6 +2,8 @@
 public class Simple : Goal
 {
     private Boolean _IsComplete;
+
+    
     public Simple(string name, string description, int points) : base (name, description, points)
     {
         _IsComplete = false;
