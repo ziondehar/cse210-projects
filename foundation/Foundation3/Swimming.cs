@@ -1,26 +1,23 @@
 public class Swimming : Activity
 {
-    
-    public Swimming(): base
-
-
-
-
-    public override void GetDistance()
+    private int _laps;
+ public Swimming(string date, int minutes, int laps) : base(date, minutes)
     {
-        return
+        _laps = laps;
     }
-   
-    public override void GetSpeed()
+
+    public override double GetDistance()
     {
-        return 
+        return _laps * 50 / 1000.0;
     }
-    public abstract void GetPace()
+
+    public override double GetSpeed()
     {
-        return
+        return GetDistance() / GetMinutes() * 60;
     }
-    public abstract void Fullstring()
+
+    public override double GetPace()
     {
-        return 
+        return GetMinutes() / GetDistance();
     }
 }
