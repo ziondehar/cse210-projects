@@ -89,10 +89,10 @@ public class GoalManager
 
         using (StreamReader reader = new StreamReader("goals.txt"))
         {
-            // Read score
+            
             _score = int.Parse(reader.ReadLine());
 
-            // Clear current goals and load from file
+            
             _goals.Clear();
             string line;
             while ((line = reader.ReadLine()) != null)
