@@ -3,7 +3,8 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
+    { 
+        Console.Clear();
          var activities = new List<Activity>
         {
             new Running("12 June 2024", 30, 4.8),
